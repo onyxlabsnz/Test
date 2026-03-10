@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Onyx Labs – AI Consultancy"
+  description="Onyx Labs is an AI consultancy helping teams design, govern, and ship safe, production-grade AI systems."
+>
+  <section class="hero">
+    <div class="container shell">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow">
+            <span class="pill-dot"></span>
+            <span>AI governance, training, and engineering in one partner</span>
+          </div>
+          <h1 class="hero-title">
+            Ship
+            <span>production-grade AI</span>
+            your legal team can sign off on.
+          </h1>
+          <p class="hero-subtitle">
+            Onyx Labs helps product, data, and risk teams design, review, and deploy AI systems
+            that are fast in production, aligned with policy, and safe by design.
+          </p>
+          <div class="hero-actions flex flex-wrap gap-2 mt-3">
+            <a href="/contact" class="btn btn-primary">Book a strategy session</a>
+            <a href="/ai-governance" class="btn btn-ghost">Explore AI governance</a>
+          </div>
+          <p class="hero-footnote">
+            Focus on shipping value. We handle model selection, integration, safety, and rollout.
+          </p>
+        </div>
+        <div class="hero-panel">
+          <div class="glass" aria-label="AI program snapshot">
+            <div class="glass-header">
+              <div class="glass-title">Onyx AI Readiness</div>
+              <div class="status-pill">
+                <span class="pill-dot"></span>
+                <span>Production ready</span>
+              </div>
+            </div>
+            <div class="code-panel" aria-hidden="true">
+              <div class="code-line">
+                <span>01</span>
+                <span class="code-ok">✓ Governance policy mapped to use-cases</span>
+              </div>
+              <div class="code-line">
+                <span>02</span>
+                <span class="code-ok">✓ Model + infra architecture designed</span>
+              </div>
+              <div class="code-line">
+                <span>03</span>
+                <span class="code-ok">✓ Red-teaming + evaluation harness in place</span>
+              </div>
+              <div class="code-line">
+                <span>04</span>
+                <span class="code-warn">! Training gaps: product + engineering</span>
+              </div>
+              <div class="code-line">
+                <span>05</span>
+                <span class="code-ok">✓ Hosting + observability configured</span>
+              </div>
+              <div class="code-line">
+                <span>06</span>
+                <span class="code-ok">✓ Executive alignment on AI roadmap</span>
+              </div>
+              <div class="code-line">
+                <span>07</span>
+                <span class="code-ok">✓ Data privacy and retention reviewed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature-section">
+    <div class="container shell">
+      <div class="section-header flex justify-between align-items-start flex-wrap gap-3 mb-3">
+        <div class="section-title">What we do</div>
+        <p class="section-subtitle mb-0">
+          Governance, training, consulting, and full-stack AI development — orchestrated
+          as one program, not separate vendors.
+        </p>
+      </div>
+      <div class="row row-cols-3">
+        <a class="card-onyx" href="/ai-governance">
+          <div class="card-label">Governance</div>
+          <div class="card-title">AI Governance & Risk</div>
+          <p class="card-body-text">
+            Translate policy into guardrails, workflows, and approvals your teams will
+            actually follow.
+          </p>
+        </a>
+        <a class="card-onyx" href="/ai-training">
+          <div class="card-label">Enablement</div>
+          <div class="card-title">AI Training & Upskilling</div>
+          <p class="card-body-text">
+            Hands-on, role-based training for product, engineering, and leadership teams.
+          </p>
+        </a>
+        <a class="card-onyx" href="/ai-development">
+          <div class="card-label">Build</div>
+          <div class="card-title">AI & Web Engineering</div>
+          <p class="card-body-text">
+            We design, build, and host AI-backed applications and developer tooling.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature-section">
+    <div class="container shell">
+      <div class="section-header flex justify-between align-items-start flex-wrap gap-3 mb-3">
+        <div>
+          <div class="section-title">End-to-end expertise</div>
+          <p class="section-subtitle mb-0">
+            Whether you're designing your first AI policy or scaling a production LLM platform,
+            Onyx Labs meets you where you are.
+          </p>
+        </div>
+      </div>
+      <div class="row row-cols-3">
+        <a class="card-onyx" href="/ai-consulting">
+          <div class="card-label">Advisory</div>
+          <div class="card-title">Executive & product AI consulting</div>
+          <p class="card-body-text">
+            Clarify AI strategy, identify real opportunities, and avoid shiny-object detours.
+          </p>
+        </a>
+        <a class="card-onyx" href="/web-development">
+          <div class="card-label">Frontends</div>
+          <div class="card-title">Web development for AI products</div>
+          <p class="card-body-text">
+            Modern, fast web experiences tuned for AI-powered workflows and iterative discovery.
+          </p>
+        </a>
+        <a class="card-onyx" href="/web-hosting">
+          <div class="card-label">Infra</div>
+          <div class="card-title">Managed hosting & observability</div>
+          <p class="card-body-text">
+            Hardened hosting, monitoring, and incident workflows for AI-intensive applications.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

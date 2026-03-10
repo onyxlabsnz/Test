@@ -1,24 +1,33 @@
-## Onyx Labs Marketing Site
+# Onyx Labs (Astro)
 
-Static marketing site for **Onyx Labs**, an AI consultancy.
+Rebuild of the Onyx Labs marketing site in [Astro](https://astro.build/) with **no Bootstrap**. Navbar and footer are reusable components; layout uses custom CSS (flex/grid utilities and component styles).
 
-### Structure
+## Setup
 
-- `index.html` – Home
-- `ai-governance.html` – AI Governance
-- `ai-training.html` – AI Training
-- `ai-consulting.html` – AI Consulting
-- `ai-development.html` – AI Development
-- `web-development.html` – Web Development
-- `web-hosting.html` – Web Hosting
-- `about.html` – About Us
-- `contact.html` – Contact Us
-- `privacy.html` – Privacy
-- `terms.html` – Terms
-- `styles.css` – Shared styles
-- `onyx-labs-logo.svg` – Logo
+```bash
+npm install
+npm run dev
+```
 
-### Running locally
+Open [http://localhost:4321](http://localhost:4321).
 
-You can open any of the `.html` files directly in a browser (for example, by double‑clicking `index.html` in Finder), or serve the folder with any static file server.
+## Build
 
+```bash
+npm run build
+npm run preview
+```
+
+## Structure
+
+- **`src/layouts/BaseLayout.astro`** – Root layout (meta, Navbar, slot, Footer, Lenis).
+- **`src/components/Navbar.astro`** – Site header with Services dropdown (hover), About, Contact, CTA. Mobile menu toggles via `.nav-onyx.open`.
+- **`src/components/Footer.astro`** – Footer columns, social links, live clock, copyright.
+- **`src/styles/global.css`** – All styles (variables, layout utilities, navbar, hero, cards, forms, legal, footer). No Bootstrap.
+- **`src/pages/*.astro`** – One file per route: index, about, contact, ai-governance, ai-training, ai-consulting, ai-development, web-development, web-hosting, privacy, terms.
+
+## Features
+
+- **Smooth scroll:** Lenis is initialized in the layout (see `src/scripts/lenis.ts`).
+- **Responsive:** Custom grid and flex utilities; navbar collapses to a hamburger menu on small screens.
+- **Dropdown:** Services menu opens on hover (CSS); no Bootstrap JS.
