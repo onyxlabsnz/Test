@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Updates — Onyx Labs"
+  description="Company updates, product changes, and announcements from Onyx Labs."
+>
+  <section class="updates-main">
+    <div class="container shell">
+      <div class="updates-header">
+        <div class="content-kicker">Onyx Labs</div>
+        <h1 class="content-heading">Updates</h1>
+        <p class="content-lede">What we've been building, shipping, and thinking about.</p>
+      </div>
+
+      <div class="updates-layout">
+        <!-- Sticky date nav -->
+        <aside class="updates-sidebar">
+          <ul class="updates-nav" id="updatesNav">
+            <li><a href="#mar-2025">Mar 2025</a></li>
+            <li><a href="#feb-2025">Feb 2025</a></li>
+            <li><a href="#jan-2025">Jan 2025</a></li>
+            <li><a href="#dec-2024">Dec 2024</a></li>
+          </ul>
+        </aside>
+
+        <!-- Feed -->
+        <div class="updates-feed">
+
+          <article class="update-entry" id="mar-2025">
+            <div class="update-date">March 2025</div>
+            <h2 class="update-title">AI Governance framework now available as a standalone engagement</h2>
+            <div class="update-tags">
+              <span class="tag">AI Governance</span>
+              <span class="tag">New offering</span>
+            </div>
+            <div class="update-body">
+              <p>
+                Our AI Governance framework — previously bundled inside larger consulting engagements — is now
+                available as a focused, standalone offering. Teams can adopt it independently without committing
+                to a broader partnership.
+              </p>
+              <p>The framework covers:</p>
+              <ul>
+                <li>Risk classification and model inventory</li>
+                <li>Policy templates for model use, data handling, and human oversight</li>
+                <li>Review and sign-off workflows for new AI features</li>
+                <li>Incident response playbooks</li>
+              </ul>
+              <p>
+                Engagements typically run four to six weeks and result in a governance package your team owns
+                and maintains going forward.
+              </p>
+            </div>
+          </article>
+
+          <article class="update-entry" id="feb-2025">
+            <div class="update-date">February 2025</div>
+            <h2 class="update-title">Launched web hosting for AI-native applications</h2>
+            <div class="update-tags">
+              <span class="tag">Web Hosting</span>
+              <span class="tag">Infrastructure</span>
+            </div>
+            <div class="update-body">
+              <p>
+                We expanded our services to include managed web hosting, specifically tuned for AI-native
+                applications that have variable compute patterns, streaming requirements, and strict latency
+                budgets.
+              </p>
+              <ul>
+                <li>Edge-first deployments with global CDN</li>
+                <li>Native support for SSE and WebSocket streaming</li>
+                <li>Integrated observability for AI request traces</li>
+                <li>SLA-backed uptime with on-call support</li>
+              </ul>
+              <p>
+                This service is available to existing Onyx Labs clients as well as teams seeking hosting
+                without a full consulting engagement.
+              </p>
+            </div>
+          </article>
+
+          <article class="update-entry" id="jan-2025">
+            <div class="update-date">January 2025</div>
+            <h2 class="update-title">AI Training programs redesigned around role-specific tracks</h2>
+            <div class="update-tags">
+              <span class="tag">AI Training</span>
+              <span class="tag">Curriculum</span>
+            </div>
+            <div class="update-body">
+              <p>
+                We overhauled our training curriculum after noticing that mixed-audience workshops produced
+                uneven results. The new format splits into three tracks — Product, Engineering, and Leadership
+                — each with its own depth, exercises, and outcomes.
+              </p>
+              <ul>
+                <li><strong>Product track:</strong> AI product design, prompt workflows, evaluations</li>
+                <li><strong>Engineering track:</strong> Model integration, RAG, evals, observability</li>
+                <li><strong>Leadership track:</strong> Risk, policy, build-vs-buy, ROI framing</li>
+              </ul>
+              <p>
+                Teams can run all three in sequence or pick the track most relevant to them. Each track is
+                available as a half-day workshop or a multi-session program.
+              </p>
+            </div>
+          </article>
+
+          <article class="update-entry" id="dec-2024">
+            <div class="update-date">December 2024</div>
+            <h2 class="update-title">Onyx Labs founded</h2>
+            <div class="update-tags">
+              <span class="tag">Company</span>
+            </div>
+            <div class="update-body">
+              <p>
+                Onyx Labs launched with a clear mandate: help product companies ship responsible AI
+                without sacrificing speed or control. The founding team comes from backgrounds in AI
+                engineering, product strategy, and enterprise risk.
+              </p>
+              <p>
+                We started with a single belief — that the teams building AI today need a partner who
+                can operate at every layer, from policy to production. That's still what we're here for.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Highlight active date in sidebar as user scrolls
+    (function () {
+      const nav = document.getElementById('updatesNav');
+      if (!nav) return;
+      const links = Array.from(nav.querySelectorAll('a'));
+      const entries = links.map(a => document.querySelector(a.getAttribute('href')));
+
+      function onScroll() {
+        let current = entries[0];
+        for (const entry of entries) {
+          if (entry && entry.getBoundingClientRect().top <= 120) current = entry;
+        }
+        links.forEach(a => a.classList.remove('active'));
+        const activeLink = links.find(a => a.getAttribute('href') === '#' + current?.id);
+        if (activeLink) activeLink.classList.add('active');
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</BaseLayout>
