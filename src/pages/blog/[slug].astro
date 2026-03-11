@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({ params: { slug: post.slug } }));
+}
+
+const { slug } = Astro.params;
+const post = await getEntry('blog', slug);
+if (!post) return Astro.redirect('/blog');
+const { Content } = await post.render();
+---
+<BaseLayout title={`${post.data.title} — Onyx Labs`}>
+  <article class="blog-post-main">
+    <div class="container shell">
+      <div class="blog-post-wrap">
+        <header class="blog-post-header">
+          <div class="blog-post-meta">
+            <a href="/blog" class="blog-back">← Blog</a>
+            <time class="blog-post-date-label">
+              {post.data.date.toLocaleDateString('en-NZ', { day: 'numeric', month: 'long', year: 'numeric' })}
+            </time>
+          </div>
+          <h1 class="blog-post-title">{post.data.title}</h1>
+        </header>
+        <div class="blog-post-body prose">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

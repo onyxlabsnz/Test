@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+// Group posts by "Month Year"
+const groups: Record<string, typeof posts> = {};
+for (const post of posts) {
+  const label = post.data.date.toLocaleDateString('en-NZ', { month: 'long', year: 'numeric' });
+  if (!groups[label]) groups[label] = [];
+  groups[label].push(post);
+}
+const groupEntries = Object.entries(groups);
+
+function getExcerpt(body: string, maxLength = 160): string {
+  const text = body
+    .replace(/^#{1,6}\s+.+$/gm, '')
+    .replace(/\*{1,2}([^*]+)\*{1,2}/g, '$1')
+    .replace(/`[^`]+`/g, '')
+    .trim()
+    .split(/\n\n+/)[0]
+    .trim();
+  return text.length > maxLength ? text.slice(0, maxLength).trimEnd() + '…' : text;
+}
+---
+<BaseLayout
+  title="Blog — Onyx Labs"
+  description="Writing on AI governance, model deployment, and building responsible AI systems."
+>
+  <section class="blog-main">
+    <div class="container shell">
+      <div class="blog-header">
+        <h1 class="content-heading">Blog</h1>
+        <p class="content-lede">Thinking on AI governance, deployment, and responsible systems.</p>
+      </div>
+
+      <div class="blog-feed">
+        {groupEntries.map(([label, groupPosts]) => {
+          const id = label.toLowerCase().replace(/\s+/g, '-');
+          return (
+            <div class="blog-group" id={id}>
+              <div class="blog-group-month">{label}</div>
+              <div class="blog-group-posts">
+                {groupPosts.map(post => (
+                  <article class="blog-post-item">
+                    <div class="blog-post-title">{post.data.title}</div>
+                    <p class="blog-post-excerpt">{getExcerpt(post.body)}</p>
+                    <a href={`/blog/${post.slug}`} class="blog-read-more">Read more →</a>
+                  </article>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

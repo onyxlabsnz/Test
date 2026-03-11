@@ -1,48 +1,37 @@
 ---
 ---
-<header class="navbar">
-  <nav class="nav-onyx" id="navMain">
-    <div class="nav-wrap">
-      <a class="nav-brand" href="/">
-        <img src="/onyx-labs-logo.svg" alt="Onyx Labs" class="logo-mark" width="140" height="44" />
-      </a>
-      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-      <div class="nav-menu">
-        <ul class="nav-list">
-          <li class="nav-item dropdown">
-            <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/ai-governance">AI Governance</a></li>
-              <li><a class="dropdown-item" href="/ai-training">AI Training</a></li>
-              <li><a class="dropdown-item" href="/ai-consulting">AI Consulting</a></li>
-              <li><a class="dropdown-item" href="/ai-development">AI Development</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="/web-development">Web Development</a></li>
-              <li><a class="dropdown-item" href="/web-hosting">Web Hosting</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a href="/updates">Updates</a>
-          </li>
-          <li class="nav-item">
-            <a href="/contact">Contact</a>
-          </li>
-        </ul>
-        <div class="nav-cta">
-          <a href="/contact" class="btn btn-primary btn-sm">Get in touch</a>
-        </div>
-      </div>
-      <div class="nav-actions">
-        <a href="/contact" class="btn btn-primary btn-sm">Get in touch</a>
-      </div>
+<header class="navbar" id="navMain">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <img src="/onyx-labs-logo.svg" alt="Onyx Labs" width="140" height="44" />
+    </a>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <div class="nav-menu">
+      <ul class="nav-list">
+        <li class="nav-item dropdown">
+          <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/ai-governance">AI Governance</a></li>
+            <li><a class="dropdown-item" href="/ai-training">AI Training</a></li>
+            <li><a class="dropdown-item" href="/ai-consulting">AI Consulting</a></li>
+            <li><a class="dropdown-item" href="/ai-development">AI Development</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="/web-development">Web Development</a></li>
+            <li><a class="dropdown-item" href="/web-hosting">Web Hosting</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="/about">About</a></li>
+        <li class="nav-item"><a href="/blog">Blog</a></li>
+        <li class="nav-item"><a href="/contact">Contact</a></li>
+      </ul>
     </div>
-  </nav>
+    <div class="nav-actions">
+      <a href="/contact" class="btn btn-primary btn-sm">Get in touch</a>
+    </div>
+  </div>
 </header>
 <div class="nav-backdrop" id="navBackdrop"></div>
 <script>
@@ -68,11 +57,8 @@
       nav.classList.contains('open') ? closeMenu() : openMenu();
     });
 
-    if (backdrop) {
-      backdrop.addEventListener('click', closeMenu);
-    }
+    if (backdrop) backdrop.addEventListener('click', closeMenu);
 
-    // Mobile dropdown: toggle on click
     document.querySelectorAll('.nav-item.dropdown').forEach(function(item) {
       const link = item.querySelector('.dropdown-toggle');
       if (!link) return;
